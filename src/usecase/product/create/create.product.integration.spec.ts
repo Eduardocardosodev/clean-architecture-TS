@@ -4,6 +4,7 @@ import ProductRepository from '../../../infrastructure/product/repository/sequel
 import FindProductUseCase from '../find/find.product.usecase';
 import Product from '../../../domain/product/entity/product';
 import CreateProductUseCase from './create.product.usecase';
+import { v4 as uuuid } from 'uuid';
 
 describe('Test create product use case', () => {
   let sequelize: Sequelize;
@@ -34,6 +35,10 @@ describe('Test create product use case', () => {
       price: 23.45,
     };
     const createdProduct = await useCase.execute(productInput);
-    expect(createdProduct).toEqual(productInput);
+    expect(createdProduct).toEqual({
+      id: expect.any(String),
+      name: 'Banana',
+      price: 23.45,
+    });
   });
 });

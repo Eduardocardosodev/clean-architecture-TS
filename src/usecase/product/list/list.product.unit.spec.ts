@@ -1,9 +1,9 @@
 import ProductFactory from '../../../domain/product/factory/product.factory';
 import ListProductUseCase from './list.product.usecase';
 
-const product1 = ProductFactory.create('a', 'Banana', 23.45);
+const product1 = ProductFactory.create('Banana', 23.45);
 
-const product2 = ProductFactory.create('b', 'Banana 2', 23.45);
+const product2 = ProductFactory.create('Banana 2', 23.45);
 
 const MockRepository = () => {
   return {
