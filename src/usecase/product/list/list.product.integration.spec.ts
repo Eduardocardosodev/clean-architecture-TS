@@ -33,8 +33,12 @@ describe('Test list product use case', () => {
       name: 'Banana',
       price: 23.45,
     };
+
+    const productOne = new Product(updatedProductInput.id, updatedProductInput.name, updatedProductInput.price)
+    await productRepository.create(productOne)
+
     const productList = await useCase.execute({});
 
-    expect(productList).toHaveLength(1);
+    expect(productList.Producers.length).toBe(1);
   });
 });

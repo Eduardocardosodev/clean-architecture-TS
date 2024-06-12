@@ -1,4 +1,3 @@
-import { response } from 'express';
 import { app, sequelize } from '../express';
 import request from 'supertest';
 describe('E2E test for product', () => {
@@ -46,11 +45,11 @@ describe('E2E test for product', () => {
 
     const listResponse = await request(app).get('/product').send();
     expect(listResponse.status).toBe(200);
-    expect(listResponse.body.products.length).toBe(2);
-    const product = listResponse.body.products[0];
+    expect(listResponse.body.Producers.length).toBe(2);
+    const product = listResponse.body.Producers[0];
     expect(product.name).toBe('Banana');
     expect(product.price).toBe(23.45);
-    const product2 = listResponse.body.products[1];
+    const product2 = listResponse.body.Producers[1];
     expect(product2.name).toBe('Maca');
     expect(product.price).toBe(23.45);
   });

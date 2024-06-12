@@ -1,4 +1,3 @@
-import Product from '../../../domain/product/entity/product';
 import ProductInterface from '../../../domain/product/entity/product.interface';
 import ProductRepositoryInterface from '../../../domain/product/repository/product-repository.interface';
 import { InputListProductDto, OutputListProductDto } from './list.product.dto';
@@ -11,8 +10,8 @@ export default class ListProductUseCase {
   }
 
   async execute(input: InputListProductDto): Promise<OutputListProductDto> {
-    const product = await this.productRepository.findAll();
-    return OutputMapper.toOutput(product);
+    const products = await this.productRepository.findAll();
+    return OutputMapper.toOutput(products);
   }
 }
 
