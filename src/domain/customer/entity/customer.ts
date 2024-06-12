@@ -1,7 +1,7 @@
 import Entity from '../../@shared/entity/entity.abstract';
 import Address from '../value-object/address';
-import CustomerValidatorFactory from '../factory/customer.validator.factory';
 import NotificationError from '../../@shared/notification/notification.errors';
+import CustomerValidatorFactory from '../factory/customer.validator.factory';
 
 export default class Customer extends Entity {
   private _name: string = '';

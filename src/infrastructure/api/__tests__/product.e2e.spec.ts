@@ -31,7 +31,6 @@ describe('E2E test for product', () => {
 
   it('should list all product', async () => {
     const response = await request(app).post('/product').send({
-      type: 'a',
       name: 'Banana',
       price: 23.45,
     });
@@ -39,7 +38,6 @@ describe('E2E test for product', () => {
     expect(response.status).toBe(200);
 
     const response2 = await request(app).post('/product').send({
-      type: 'b',
       name: 'Maca',
       price: 23.45,
     });
