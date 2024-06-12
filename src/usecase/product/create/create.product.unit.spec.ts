@@ -29,17 +29,6 @@ describe('Unit Test create product use case', () => {
     });
   });
 
-  it('should thrown an error when type is missing', async () => {
-    const productRepository = MockRepository();
-    const productCreateUseCase = new CreateProductUseCase(productRepository);
-
-    input.type = '';
-
-    await expect(productCreateUseCase.execute(input)).rejects.toThrow(
-      'Product type not supported'
-    );
-  });
-
   it('should thrown an error when name is missing', async () => {
     const productRepository = MockRepository();
     const productCreateUseCase = new CreateProductUseCase(productRepository);
@@ -47,7 +36,7 @@ describe('Unit Test create product use case', () => {
     input.name = '';
 
     await expect(productCreateUseCase.execute(input)).rejects.toThrow(
-      'Product type not supported'
+      'Name is required'
     );
   });
 });

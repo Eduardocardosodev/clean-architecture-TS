@@ -1,7 +1,6 @@
 import { Sequelize } from 'sequelize-typescript';
 import ProductModel from '../../../infrastructure/product/repository/sequelize/product.model';
 import ProductRepository from '../../../infrastructure/product/repository/sequelize/product.repository';
-import Product from '../../../domain/product/entity/product';
 import UpdateProductUseCase from './update.product.usecase';
 
 describe('Test update product use case', () => {
@@ -11,7 +10,7 @@ describe('Test update product use case', () => {
     sequelize = new Sequelize({
       dialect: 'sqlite',
       storage: ':memory:',
-      logging: console.log,
+      logging: false,
       sync: { force: true },
     });
 

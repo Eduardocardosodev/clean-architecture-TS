@@ -3,7 +3,7 @@ import NotificationError from '../../@shared/notification/notification.errors';
 import ProductValidatorFactory from '../factory/product.validator.factory';
 import ProductInterface from './product.interface';
 
-export default class Product extends Entity {
+export default class Product extends Entity implements ProductInterface {
   private _name: string;
   private _price: number;
 

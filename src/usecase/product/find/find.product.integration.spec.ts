@@ -27,9 +27,9 @@ describe('Test find product use case', () => {
     const productRepository = new ProductRepository();
     const useCase = new FindProductUseCase(productRepository);
 
-    const costumer = new Product('123', 'Banana', 23.45);
+    const product = new Product('123', 'Banana', 23.45);
 
-    const productCreated = await productRepository.create(costumer);
+    const productCreated = await productRepository.create(product);
 
     const input = {
       id: '123',
@@ -37,16 +37,11 @@ describe('Test find product use case', () => {
 
     const output = {
       id: '123',
-      name: 'John',
-      address: {
-        street: 'Street',
-        city: 'city',
-        number: 123,
-        zip: 'zip',
-      },
+      name: 'Banana',
+      price: 23.45 
     };
 
-    const result = useCase.execute(input);
+    const result = await useCase.execute(input);
 
     expect(result).toEqual(output);
   });
