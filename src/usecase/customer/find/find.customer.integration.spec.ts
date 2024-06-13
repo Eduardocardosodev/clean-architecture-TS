@@ -11,7 +11,7 @@ describe('Test find customer use case', () => {
   beforeEach(async () => {
     sequelize = new Sequelize({
       dialect: 'sqlite',
-      storage: ':memory',
+      storage: ':memory:',
       logging: false,
       sync: { force: true },
     });
@@ -24,33 +24,34 @@ describe('Test find customer use case', () => {
     await sequelize.close();
   });
 
-  it('should find a customer', async () => {
-    const customerRepository = new CustomerRepository();
-    const useCase = new FindCustomerUseCase(customerRepository);
+  it("should find a customer", async () => {
+    
+    const customerRepository = new CustomerRepository()
+    const usecase = new FindCustomerUseCase(customerRepository)
 
-    const costumer = new Customer('123', 'John');
-    const address = new Address('Street', 123, 'zip', 'city');
-    costumer.changeAddress(address);
-
-    const customerCreated = await customerRepository.create(costumer);
+    const customer = new Customer("1", "Lucian")
+    const address = new Address("Rua 123", 99, "88888-888", "Criciúma")
+    customer.changeAddress(address)
+    await customerRepository.create(customer)
 
     const input = {
-      id: '123',
-    };
+      id: "1"
+    }
 
     const output = {
-      id: '123',
-      name: 'John',
+      id: "1",
+      name: "Lucian",
       address: {
-        street: 'Street',
-        city: 'city',
-        number: 123,
-        zip: 'zip',
-      },
-    };
+        street: "Rua 123",
+        number: 99,
+        zip: "88888-888",
+        city: "Criciúma"
+      }
+    }
 
-    const result = useCase.execute(input);
+    const result = await usecase.execute(input)
 
-    expect(result).toEqual(output);
-  });
+    expect(result).toEqual(output)
+
+  })
 });
